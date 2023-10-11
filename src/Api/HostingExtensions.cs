@@ -24,6 +24,15 @@ internal static class HostingExtensions
                 };
             });
 
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("ApiScope", policy =>
+            {
+                policy.RequireAuthenticatedUser();
+                policy.RequireClaim("scope", "api1");
+            });
+        });
+
         return builder.Build();
     }
 
@@ -45,7 +54,7 @@ internal static class HostingExtensions
 
         IdentityModelEventSource.ShowPII = true;
 
-        app.MapControllers();
+        app.MapControllers().RequireAuthorization("ApiScope");;
 
         return app;
     }
