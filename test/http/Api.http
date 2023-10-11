@@ -1,0 +1,19 @@
+@api_host = https://localhost:5000
+
+@identity_server = https://localhost:5001
+
+@accessToken = {{login.response.body.$.access_token}}
+
+###
+
+# @name login 
+POST {{identity_server}}/connect/token HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+client_id=client&client_secret=secret&grant_type=client_credentials&scope=api1
+
+###
+
+GET {{api_host}}/identity/
+Accept: application/json
+Authorization: Bearer {{accessToken}}
