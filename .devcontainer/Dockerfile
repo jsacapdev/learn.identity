@@ -10,10 +10,14 @@ COPY dotnet/install-dotnet-preview.sh install-dotnet-preview.sh
 RUN bash ./install-dotnet-preview.sh \
      && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts     
 
+# configure the certificates
+COPY dotnet/ubuntu-create-dotnet-devcert-common.sh ubuntu-create-dotnet-devcert-common.sh
+COPY dotnet/ubuntu-create-dotnet-devcert.sh ubuntu-create-dotnet-devcert.sh
+RUN bash ./ubuntu-create-dotnet-devcert.sh \
+     && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts          
+
 # add some lines to bashrc
 RUN echo 'alias ls="ls -alF"' >> ~/.bashrc
-
-RUN dotnet dev-certs https --trust
 
 RUN dotnet tool update --global dotnet-ef --prerelease
 
