@@ -14,7 +14,6 @@
             "args": [],
             "cwd": "${workspaceFolder}/src/IdentityServer",
             "stopAtEntry": false,
-            // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
@@ -35,7 +34,46 @@
             "args": [],
             "cwd": "${workspaceFolder}/src/Api",
             "stopAtEntry": false,
-            // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md.
+            "name": "IdentityServerUi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/src/IdentityServerUi/bin/Debug/net6.0/IdentityServerUi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/IdentityServerUi",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            // Use IntelliSense to find out which attributes exist for C# debugging
+            // Use hover for the description of the existing attributes
+            // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md.
+            "name": "MvcClient",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/src/MvcClient/bin/Debug/net8.0/MvcClient.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/MvcClient",
+            "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
@@ -49,7 +87,9 @@
             "name": "All",
             "configurations": [
                 "IdentityServer",
-                "Api"
+                "Api",
+                "IdentityServerUi",
+                "MvcClient"
             ],
             "preLaunchTask": "build",
             "stopAll": true

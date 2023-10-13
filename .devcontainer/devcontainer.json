@@ -41,6 +41,7 @@
 	"forwardPorts": [
 		5000,
 		5001,
+		6001,
 		1433
 	],
 	"portsAttributes": {

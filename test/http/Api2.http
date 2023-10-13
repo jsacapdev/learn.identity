@@ -1,0 +1,19 @@
+@identity_server = https://localhost:6001
+
+@api_host = https://localhost:5000
+
+@accessToken = {{login.response.body.$.access_token}}
+
+###
+
+# @name login 
+POST {{identity_server}}/connect/token HTTP/1.1
+content-type: application/x-www-form-urlencoded
+
+client_id=m2m.client&client_secret=511536EF-F270-4058-80CA-1C89C192F69A&grant_type=client_credentials&scope=scope1
+
+###
+
+GET {{api_host}}/identity/
+Accept: application/json
+Authorization: Bearer {{accessToken}}

@@ -52,8 +52,6 @@ internal static class HostingExtensions
         app.UseAuthentication();
         app.UseAuthorization();
 
-        IdentityModelEventSource.ShowPII = true;
-
         app.MapControllers().RequireAuthorization("ApiScope");;
 
         return app;
